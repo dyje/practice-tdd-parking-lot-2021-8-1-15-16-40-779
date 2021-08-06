@@ -28,7 +28,7 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket = parkingLot.park(car);
                 
         //when
-        Car parkedCar = parkingLot.fetch(car);
+        Car parkedCar = parkingLot.fetch(parkingTicket);
         
         //then
         assertEquals(parkedCar, car);
