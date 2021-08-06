@@ -80,6 +80,39 @@ public class ParkingLotTest {
         assertNull(actualCar);
     }
     
+    @Test
+    void should_return_nothing_when_park_given_parking_lot_no_slot_and_a_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        Car car4 = new Car();
+        Car car5 = new Car();
+        Car car6 = new Car();
+        Car car7 = new Car();
+        Car car8 = new Car();
+        Car car9 = new Car();
+        Car car10 = new Car();
+
+        //when
+        ParkingTicket parkingTicketForCar1 = parkingLot.park(car1);
+        ParkingTicket parkingTicketForCar2 = parkingLot.park(car2);
+        ParkingTicket parkingTicketForCar3 = parkingLot.park(car3);
+        ParkingTicket parkingTicketForCar4 = parkingLot.park(car4);
+        ParkingTicket parkingTicketForCar5 = parkingLot.park(car5);
+        ParkingTicket parkingTicketForCar6 = parkingLot.park(car6);
+        ParkingTicket parkingTicketForCar7 = parkingLot.park(car7);
+        ParkingTicket parkingTicketForCar8 = parkingLot.park(car8);
+        ParkingTicket parkingTicketForCar9 = parkingLot.park(car9);
+        ParkingTicket parkingTicketForCar10 = parkingLot.park(car10);
+
+
+        //then
+        assertNull(parkingTicketForCar10);
+
+    }
+    
     
     
 }
