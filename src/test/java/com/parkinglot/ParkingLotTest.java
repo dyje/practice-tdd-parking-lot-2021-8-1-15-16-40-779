@@ -62,10 +62,12 @@ public class ParkingLotTest {
         ParkingTicket wrongParkingTicket = new ParkingTicket();
 
         //when
-        Car actualCar = parkingLot.fetch(wrongParkingTicket);
+        //Car actualCar = parkingLot.fetch(wrongParkingTicket);
+        Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(wrongParkingTicket));
         
         //then
-        assertNull(actualCar);
+        //assertNull(actualCar);
+        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
     }
     
     @Test
@@ -77,11 +79,11 @@ public class ParkingLotTest {
         parkingLot.fetch(parkingTicket); //used already
 
         //when
-        Exception exceptionMessage = assertThrows(UsedTicketException.class, () -> parkingLot.fetch(parkingTicket));
+        Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(parkingTicket));
 
         
         //then
-        assertEquals("Parking ticket is used already.", exceptionMessage.getMessage());
+        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
     }
     
     @Test
@@ -110,10 +112,10 @@ public class ParkingLotTest {
         ParkingTicket unRecognizedTicket = new ParkingTicket();
 
         //when
-        Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(unRecognizedTicket));
+            Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(unRecognizedTicket));
         
         //then
-        assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
+        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
     }
 
 
