@@ -102,6 +102,20 @@ public class ParkingLotTest {
 
     }
     
-    
-    
+    @Test
+    void should_throw_exception_with_error_message_when_fetch_given_unrecognized_parking_ticket_and_parking_lot() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingTicket unRecognizedTicket = new ParkingTicket();
+
+        //when
+        Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(unRecognizedTicket));
+        
+        //then
+        assertEquals("Unrecognized parking ticket. ", exceptionMessage.getMessage());
+    }
+
+
+
+
 }
