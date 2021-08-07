@@ -75,12 +75,13 @@ public class ParkingLotTest {
         Car car = new Car();
         ParkingTicket parkingTicket = parkingLot.park(car);
         parkingLot.fetch(parkingTicket); //used already
-                
+
         //when
-        Car actualCar = parkingLot.fetch(parkingTicket);
+        Exception exceptionMessage = assertThrows(UsedTicketException.class, () -> parkingLot.fetch(parkingTicket));
+
         
         //then
-        assertNull(actualCar);
+        assertEquals("Parking ticket is used already.", exceptionMessage.getMessage());
     }
     
     @Test
