@@ -117,6 +117,21 @@ public class ParkingLotTest {
         //then
         assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
     }
+    
+    @Test
+    void should_return_parking_ticket_when_park_given_a_parking_lot_and_a_car_and_standard_parking_boy() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        Car car = new Car();
 
+        //when
+        ParkingTicket parkingTicket = standardParkingBoy.park(car);
+
+        //then
+        assertNotNull(parkingTicket);
+        
+    }
+    
 
 }
