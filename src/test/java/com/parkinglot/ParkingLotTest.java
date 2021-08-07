@@ -67,7 +67,7 @@ public class ParkingLotTest {
         
         //then
         //assertNull(actualCar);
-        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
+        assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
     }
     
     @Test
@@ -83,7 +83,7 @@ public class ParkingLotTest {
 
         
         //then
-        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
+        assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
     }
     
     @Test
@@ -115,9 +115,8 @@ public class ParkingLotTest {
             Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetch(unRecognizedTicket));
         
         //then
-        assertEquals("Invalid Ticket.", exceptionMessage.getMessage());
+        assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
     }
-
 
 
 

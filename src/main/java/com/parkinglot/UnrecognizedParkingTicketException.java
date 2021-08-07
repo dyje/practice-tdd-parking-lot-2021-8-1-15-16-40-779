@@ -4,7 +4,6 @@ public class UnrecognizedParkingTicketException extends RuntimeException{
     @Override
 
     public String getMessage(){
-        return "Invalid Ticket.";
+        return "Unrecognized parking ticket.";
     }
-
 }
