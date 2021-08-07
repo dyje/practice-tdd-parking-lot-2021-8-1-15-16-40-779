@@ -168,4 +168,21 @@ public class ParkingLotTest {
         assertEquals(actualCar2, car2);
     }
 
+    @Test
+    void should_throw_exception_with_error_message_when_fetch_given_parked_car_and_wrong_ticket_a_parking_boy() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        ParkingTicket wrongParkingTicket = new ParkingTicket();
+
+        //when
+        //Car actualCar = parkingLot.fetch(wrongParkingTicket);
+        Exception exceptionMessage = assertThrows(UnrecognizedParkingTicketException.class, () -> standardParkingBoy.fetch(wrongParkingTicket));
+
+        //then
+        //assertNull(actualCar);
+        assertEquals("Unrecognized parking ticket.", exceptionMessage.getMessage());
+    }
+
+
 }
