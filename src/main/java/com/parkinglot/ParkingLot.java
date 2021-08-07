@@ -26,13 +26,20 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        Car car = parkedPosition.get(parkingTicket);
-        parkedPosition.remove(parkingTicket);
-        return car;
+        if (isRecognizedTicket(parkingTicket)){
+            Car car = parkedPosition.get(parkingTicket);
+            parkedPosition.remove(parkingTicket);
+            return car;
+        }else
+            throw new UnrecognizedParkingTicketException();
 
     }
 
     private boolean isFull(){
             return parkedPosition.size() == DEFAULT_LIMIT;
+    }
+
+    private boolean isRecognizedTicket (ParkingTicket parkingTicket){
+        return parkedPosition.containsKey(parkingTicket);
     }
 }
