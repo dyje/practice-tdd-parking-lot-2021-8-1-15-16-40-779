@@ -5,14 +5,16 @@ import java.util.Map;
 
 public class ParkingLot {
     //private Car car;
-    private Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
+    private Map<ParkingTicket, Car> parkingSlotPosition = new HashMap<>();
     private static int DEFAULT_LIMIT = 10;
+    private int capacity;
 
-    public ParkingLot(int capacity) {
-        DEFAULT_LIMIT = capacity;
+    public ParkingLot(int parkingLotCapcity) {
+        this.capacity = parkingLotCapcity;
     }
 
     public ParkingLot() {
+        capacity = DEFAULT_LIMIT;
     }
 
     public ParkingTicket park(Car car) {
@@ -20,26 +22,36 @@ public class ParkingLot {
             throw new NoParkingSpaceException();
         }else {
             ParkingTicket parkingTicket = new ParkingTicket();
-            parkedPosition.put(parkingTicket, car);
+            parkingSlotPosition.put(parkingTicket, car);
             return parkingTicket;
        }
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
         if (isRecognizedTicket(parkingTicket)){
-            Car car = parkedPosition.get(parkingTicket);
-            parkedPosition.remove(parkingTicket);
+            Car car = parkingSlotPosition.get(parkingTicket);
+            parkingSlotPosition.remove(parkingTicket);
             return car;
         }else
             throw new UnrecognizedParkingTicketException();
 
     }
 
-    private boolean isFull(){
-            return parkedPosition.size() == DEFAULT_LIMIT;
+    public boolean isFull(){
+            return parkingSlotPosition.size() == DEFAULT_LIMIT;
     }
 
-    private boolean isRecognizedTicket (ParkingTicket parkingTicket){
-        return parkedPosition.containsKey(parkingTicket);
+    public boolean isRecognizedTicket (ParkingTicket parkingTicket){
+        return parkingSlotPosition.containsKey(parkingTicket);
     }
+
+    public boolean isSlotAvailable (){
+        return parkingSlotPosition.size() < capacity;
+    }
+
+    public Map<ParkingTicket, Car> getParkingSlotPosition() {
+        return parkingSlotPosition;
+    }
+
+
 }
