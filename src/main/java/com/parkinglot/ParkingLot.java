@@ -6,7 +6,7 @@ import java.util.Map;
 public class ParkingLot {
     //private Car car;
     private Map<ParkingTicket, Car> parkingSlotPosition = new HashMap<>();
-    private static int DEFAULT_LIMIT = 10;
+    private final static int DEFAULT_LIMIT = 10;
     private int capacity;
 
     public ParkingLot(int parkingLotCapcity) {
@@ -47,6 +47,10 @@ public class ParkingLot {
 
     public boolean isSlotAvailable (){
         return parkingSlotPosition.size() < capacity;
+    }
+
+    public boolean isRelated (ParkingTicket parkingTicket){
+        return parkingSlotPosition.containsKey(parkingTicket);
     }
 
     public Map<ParkingTicket, Car> getParkingSlotPosition() {
