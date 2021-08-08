@@ -248,5 +248,22 @@ public class ParkingLotTest {
         //then
         assertTrue(standardParkingBoy.getParkingLots().get(1).getParkingSlotPosition().containsKey(secondLotParkingTicket));
     }
+
+    @Test
+    void should_return_the_right_car_from_parking_lots_when_fetch_twice_given_two_parked_cars_and_two_parking_tickets_and_parking_boy() {
+        Car car1 = new Car();
+        Car car2 = new Car();
+        StandardParkingBoy StandardParkingBoy = new StandardParkingBoy(new ParkingLot());
+        ParkingTicket car1ParkingTicket = StandardParkingBoy.park(car1);
+        ParkingTicket car2ParkingTicket = StandardParkingBoy.park(car2);
+
+        //when
+        Car actualCar1 = StandardParkingBoy.fetch(car1ParkingTicket);
+        Car actualCar2 = StandardParkingBoy.fetch(car2ParkingTicket);
+
+        //then
+        assertEquals(car1, actualCar1);
+        assertEquals(car2, actualCar2);
+    }
     
 }
