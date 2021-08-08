@@ -28,3 +28,19 @@
     Given a Car and full parking lot
     When park the car
     Then return no car is parked
+
+# story 2 
+[X] Case1 
+    Given parking lot, and an unrecognized ticket 
+    When fetch the car 
+    Then display error message "Unrecognized parking ticket"
+
+[X]Case2 
+    Given parking lot, and a used ticket 
+    When fetch the car 
+    Then display error message "Unrecognized parking ticket"
+
+[X] Case3 
+    Given parking lot, without any position and a car 
+    When park the car 
+    Then display error message "No available position"
