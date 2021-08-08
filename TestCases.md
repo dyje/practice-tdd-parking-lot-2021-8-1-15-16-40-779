@@ -102,7 +102,7 @@
     When fetch the car
     Then return nothing with error message "Unrecognized parking ticket."
 
-[] Case6
+[X] Case6
     Given a standard parking boy, two parking lots, no available parking slot for both
     When park the car
     Then return nothing with error message "No available position."
