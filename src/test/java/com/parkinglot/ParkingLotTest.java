@@ -230,5 +230,23 @@ public class ParkingLotTest {
         //then
         assertTrue(standardParkingBoy.getParkingLots().get(0).getParkingSlotPosition().containsKey(parkingTicket));
     }
+
+    @Test
+    void should_return_parking_ticket_from_second_parking_lot_when_park_given_first_parking_lot_is_full_and_car_and_parking_boy(){
+        //given
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(Arrays.asList(new ParkingLot(), new ParkingLot()));
+        Car car = new Car();
+        List<ParkingTicket> parkingTicket = new LinkedList<>();
+
+        for (int i = 0; i < 10 ; i++) {
+            parkingTicket.add(standardParkingBoy.park(car));
+        }
+
+        //when
+        ParkingTicket secondLotParkingTicket = standardParkingBoy.park(car);
+
+        //then
+        assertTrue(standardParkingBoy.getParkingLots().get(1).getParkingSlotPosition().containsKey(secondLotParkingTicket));
+    }
     
 }
